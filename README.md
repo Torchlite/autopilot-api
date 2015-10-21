@@ -61,10 +61,10 @@ Now you will be able to interact with system resources as described below.
 * Method: `autopilot.contacts.upsert`
 * Parameters:
 
-	| Name      | Type     | Required | Description                                         |
-	|-----------|----------|----------|-----------------------------------------------------|
-	| contact   | object   | Yes      | The contact data to be upserted.                    |
-	| callback  | function | No       | A callback function to be executed upon completion. |
+	| Name       | Type       | Required | Description                                         |
+	|------------|------------|----------|-----------------------------------------------------|
+	| `contact`  | `object`   | Yes      | The contact data to be upserted.                    |
+	| `callback` | `function` | No       | A callback function to be executed upon completion. |
 * Example:
 
 		var contact = { FirstName: 'Slarty', LastName: 'Bartfast', Email: 'mail@me.com' };

@@ -1,3 +1,5 @@
+_**Notice:** This library is in active development and is not yet ready for use._
+
 # autopilot
 
 A Node.js wrapper for [Autopilot](https://autopilothq.com/)'s [REST API](http://docs.autopilot.apiary.io/).

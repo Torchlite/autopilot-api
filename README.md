@@ -1,2 +1,2 @@
-# node-autopilot
+# autopilot
 A Node.js wrapper for Autopilot's REST API.

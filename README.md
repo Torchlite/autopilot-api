@@ -495,4 +495,4 @@ Now you will be able to interact with Autopilot resources as described below.
 
 ## License
 
-Released under [MIT](https://github.com/Torchlite/autopilot/blob/master/LICENSE.md).
+Released under [MIT](https://github.com/Torchlite/autopilot/blob/master/LICENSE).

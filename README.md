@@ -1,10 +1,10 @@
-# autopilot
+# autopilot-api
 
 A Node.js wrapper for [Autopilot](https://autopilothq.com/)'s [REST API](http://docs.autopilot.apiary.io/).
 
 Example:
 ```javascript
-var Autopilot = require('autopilot');
+var Autopilot = require('autopilot-api');
 var autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
 
 var contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
@@ -42,13 +42,13 @@ autopilot.contacts.upsert(contact)
 
 ## Installation
 
-	npm install autopilot --save
+	npm install autopilot-api --save
 
 ## API Reference
 
 Begin by initializing with your API key:
 
-	var Autopilot = require('autopilot');
+	var Autopilot = require('autopilot-api');
 	var autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
 
 Now you will be able to interact with Autopilot resources as described below.
@@ -495,4 +495,4 @@ Now you will be able to interact with Autopilot resources as described below.
 
 ## License
 
-Released under [MIT](https://raw.githubusercontent.com/Torchlite/autopilot/master/LICENSE).
+Released under [MIT](https://raw.githubusercontent.com/Torchlite/autopilot-api/master/LICENSE).

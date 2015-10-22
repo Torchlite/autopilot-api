@@ -1,5 +1,5 @@
 {
-  "name": "autopilot",
+  "name": "autopilot-api",
   "version": "1.0.0",
   "description": "A Node.js wrapper for Autopilot's REST API.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Torchlite/autopilot.git"
+    "url": "git+https://github.com/Torchlite/autopilot-api.git"
   },
   "keywords": [
     "autopilot",
@@ -17,9 +17,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Torchlite/autopilot/issues"
+    "url": "https://github.com/Torchlite/autopilot-api/issues"
   },
-  "homepage": "https://github.com/Torchlite/autopilot#readme",
+  "homepage": "https://github.com/Torchlite/autopilot-api#readme",
   "dependencies": {
     "axios": "^0.7.0",
     "lodash": "^3.10.1"

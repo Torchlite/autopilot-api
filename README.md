@@ -181,13 +181,15 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		autopilot.contacts.unsubscribe('bob@bobbarker.com', function (response) {
-			if (response instanceof Error) {
-				return console.error('Error', response);
-			}
+	```javascript
+	autopilot.contacts.unsubscribe('bob@bobbarker.com', function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
 
-			console.log(response);
-		});
+		console.log(response);
+	});
+	```
 
 ### Lists
 

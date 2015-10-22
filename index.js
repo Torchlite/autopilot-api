@@ -6,9 +6,12 @@ var Account = require('./resources/account.js');
 function Autopilot(apiKey) {
 	this.options = {
 		api: {
-			base: 'https://api2.autopilothq.com/v1'
+			base: 'https://api2.autopilothq.com/v1',
 			key: apiKey,
-			headers
+			headers: {
+				'autopilotapikey': apiKey,
+				'Accept': 'application/json'
+			}
 		}
 	};
 

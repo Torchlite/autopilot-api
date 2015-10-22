@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var request = require('axios');
 
-function Lists(autopilot) {
+function Lists(options) {
 	this.options = options;
 }
 

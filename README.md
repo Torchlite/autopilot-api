@@ -67,9 +67,6 @@ Now you will be able to interact with Autopilot resources as described below.
 * Promise example:
 
 	```javascript
-	var Autopilot = require('autopilot');
-	var autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
-
 	var contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
 
 	autopilot.contacts.upsert(contact)

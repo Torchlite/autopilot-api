@@ -5,25 +5,26 @@ _**Notice:** This library is in active development and is not yet ready for use.
 A Node.js wrapper for [Autopilot](https://autopilothq.com/)'s [REST API](http://docs.autopilot.apiary.io/).
 
 Example:
+```javascript
+var Autopilot = require('autopilot');
+var autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
 
-	var Autopilot = require('autopilot');
-	var autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
+var contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
 
-	var contact = { FirstName: 'Slarty', LastName: 'Bartfast', Email: 'mail@me.com' };
-
-	autopilot.contacts.upsert(contact, function (err, response) {
-		if (err) {
-			return console.error('Error', err);
-		}
-
+autopilot.contacts.upsert(contact)
+	.then(function (response) {
 		console.log(response);
+	})
+	.catch(function (response) {
+		console.log('Error', response);
 	});
+```
 
 ### Quick links:
 * [Installation](#installation)
 * [API Reference](#api-reference)
 	* [Contacts](#contacts)
-		* [Upsert Contact](#upsert-contact)
+		* [Upsert Contact](#upsert-contact)(s)
 		* [Get Contact](#get-contact)
 		* [Delete Contact](#delete-contact)
 		* [Unsubscribe Contact](#unsubscribe-contact)
@@ -52,84 +53,450 @@ Begin by initializing with your API key:
 	var Autopilot = require('autopilot');
 	var autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
 
-Now you will be able to interact with system resources as described below.
+Now you will be able to interact with Autopilot resources as described below.
 
 ### Contacts
 
 #### Upsert Contact
 
-* Method: `autopilot.contacts.upsert`
+* Method: `autopilot.contacts.upsert(data[, callback])`
 * Parameters:
 
-	| Name       | Type       | Required | Description                                         |
-	|------------|------------|----------|-----------------------------------------------------|
-	| `contact`  | `object`   | Yes      | The contact data to be upserted.                    |
-	| `callback` | `function` | No       | A callback function to be executed upon completion. |
-* Example:
+	| Name       | Type                | Required | Description                                                                           |
+	|------------|---------------------|----------|---------------------------------------------------------------------------------------|
+	| `data`     | `object` or `array` | Yes      | The contact data to be upserted. If an array is provided, a bulk upsert is performed. |
+	| `callback` | `function`          | No       | A callback function to be executed upon completion.                                   |
+* Promise example:
 
-		var contact = { FirstName: 'Slarty', LastName: 'Bartfast', Email: 'mail@me.com' };
+	```javascript
+	var Autopilot = require('autopilot');
+	var autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
 
-		autopilot.contacts.upsert(contact, function (err, response) {
-			if (err) {
-				return console.error('Error', err);
+	var contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
+
+	autopilot.contacts.upsert(contact)
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	var contact = { FirstName: 'Slarty', LastName: 'Bartfast', Email: 'mail@me.com' };
+
+	autopilot.contacts.upsert(contact, function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
+
+#### Get Contact
+
+* Method: `autopilot.contacts.get(id[, callback])`
+* Parameters:
+
+	| Name       | Type       | Required | Description                                                      |
+	|------------|------------|----------|------------------------------------------------------------------|
+	| `id`       | `string`   | Yes      | Either the Autopilot `contact_id` or the contact's email address |
+	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
+* Promise example:
+
+	```javascript
+	autopilot.contacts.get('bob@bobbarker.com')
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.contacts.get('bob@bobbarker.com', function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
+
+#### Delete Contact
+
+* Method: `autopilot.contacts.delete(id[, callback])`
+* Parameters:
+
+	| Name       | Type       | Required | Description                                                      |
+	|------------|------------|----------|------------------------------------------------------------------|
+	| `id`       | `string`   | Yes      | Either the Autopilot `contact_id` or the contact's email address |
+	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
+* Promise example:
+
+	```javascript
+	autopilot.contacts.delete('bob@bobbarker.com')
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.contacts.delete('bob@bobbarker.com', function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
+
+#### Unsubscribe Contact
+
+* Method: `autopilot.contacts.unsubscribe(id[, callback])`
+* Parameters:
+
+	| Name       | Type       | Required | Description                                                      |
+	|------------|------------|----------|------------------------------------------------------------------|
+	| `id`       | `string`   | Yes      | Either the Autopilot `contact_id` or the contact's email address |
+	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
+* Promise example:
+
+	```javascript
+	autopilot.contacts.unsubscribe('bob@bobbarker.com')
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+		autopilot.contacts.unsubscribe('bob@bobbarker.com', function (response) {
+			if (response instanceof Error) {
+				return console.error('Error', response);
 			}
 
 			console.log(response);
 		});
 
-#### Get Contact
-
-*Not yet impemented.*
-
-#### Delete Contact
-
-*Not yet impemented.*
-
-#### Unsubscribe Contact
-
-*Not yet impemented.*
-
 ### Lists
 
 #### List Lists
 
-*Not yet impemented.*
+* Method: `autopilot.lists.list([callback])`
+* Parameters:
+
+	| Name       | Type       | Required | Description                                                      |
+	|------------|------------|----------|------------------------------------------------------------------|
+	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
+* Promise example:
+
+	```javascript
+	autopilot.lists.list()
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.lists.list(function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
 
 #### Insert List
 
-*Not yet impemented.*
+* Method: `autopilot.lists.insert(name[, callback])`
+* Parameters:
+
+	| Name       | Type       | Required | Description                                                      |
+	|------------|------------|----------|------------------------------------------------------------------|
+	| `name`     | `string`   | Yes      | The name for a new list.                                         |
+	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
+* Promise example:
+
+	```javascript
+	autopilot.lists.insert('Animal Rights Supporters')
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.lists.insert('Animal Rights Supporters', function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
 
 #### List Contacts in List
 
-*Not yet impemented.*
+* Method: `autopilot.lists.roster(id[, callback])`
+* Parameters:
+
+	| Name       | Type       | Required | Description                                         |
+	|------------|------------|----------|-----------------------------------------------------|
+	| `id`       | `string`   | Yes      | The `id` of the list to query.   |
+	| `callback` | `function` | No       | A callback function to be executed upon completion. |
+* Promise example:
+
+	```javascript
+	autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8')
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
 
 #### Check if Contact is in List
 
-*Not yet impemented.*
+* Method: `autopilot.lists.has(listId, contactId[, callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                       |
+	|-------------|------------|----------|-------------------------------------------------------------------|
+	| `listId`    | `string`   | Yes      | The `id` of the list to query.                                    |
+	| `contactId` | `string`   | Yes      | Either the Autopilot `contact_id` or the contact's email address. |
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.               |
+* Promise example:
+
+	```javascript
+	autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
 
 #### Add Contact to List
 
-*Not yet impemented.*
+* Method: `autopilot.lists.add(listId, contactId[, callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                       |
+	|-------------|------------|----------|-------------------------------------------------------------------|
+	| `listId`    | `string`   | Yes      | The `id` of the list to query.                                    |
+	| `contactId` | `string`   | Yes      | Either the Autopilot `contact_id` or the contact's email address. |
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.               |
+* Promise example:
+
+	```javascript
+	autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
 
 #### Remove Contact from List
 
-*Not yet impemented.*
+* Method: `autopilot.lists.remove(listId, contactId[, callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                       |
+	|-------------|------------|----------|-------------------------------------------------------------------|
+	| `listId`    | `string`   | Yes      | The `id` of the list to query.                                    |
+	| `contactId` | `string`   | Yes      | Either the Autopilot `contact_id` or the contact's email address. |
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.               |
+* Promise example:
+
+	```javascript
+	autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
 
 ### Journeys (via triggers)
 
 #### Add Contact to Journey
 
-*Not yet impemented.*
+* Method: `autopilot.journeys.add(triggerId, contactId[, callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                          |
+	|-------------|------------|----------|----------------------------------------------------------------------|
+	| `triggerId` | `string`   | Yes      | The `id` of the trigger associated with the Journey we're adding to. |
+	| `contactId` | `string`   | Yes      | Either the Autopilot `contact_id` or the contact's email address.    |
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
+* Promise example:
+
+	```javascript
+	autopilot.lists.add('0001', 'bob@bobbarker.com')
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.lists.add('0001', 'bob@bobbarker.com', function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
 
 #### List Journeys with Triggers
 
-*Not yet impemented.*
+* Method: `autopilot.journeys.list([callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                          |
+	|-------------|------------|----------|----------------------------------------------------------------------|
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
+* Promise example:
+
+	```javascript
+	autopilot.journeys.list()
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.journeys.list(function (response) {
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
 
 ### Account
 
 #### Get Account
 
-*Not yet impemented.*
+* Method: `autopilot.account.get([callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                          |
+	|-------------|------------|----------|----------------------------------------------------------------------|
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
+* Promise example:
+
+	```javascript
+	autopilot.account.get()
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (response) {
+			console.log('Error', response);
+		});
+	```
+
+* Callback example:
+
+	```javascript
+	autopilot.account.get(function (response))
+		if (response instanceof Error) {
+			return console.error('Error', response);
+		}
+
+		console.log(response);
+	});
+	```
 
 ## License
 

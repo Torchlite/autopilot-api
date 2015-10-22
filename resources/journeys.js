@@ -1,16 +1,24 @@
 var _ = require('lodash');
-var request = require('superagent');
+var request = require('axios');
 
-function Journeys(autopilot) {
-	this.autopilot = autopilot;
+function Journeys(options) {
+	this.options = options;
 }
 
 Journeys.prototype.list = function (callback) {
-	// Stub.
+	var result = request.get(this.options.api.base + '/triggers', {
+		headers: this.options.api.headers
+	});
+
+	return callback ? result.then(callback).catch(callback) : result;
 }
 
-Journeys.prototype.add = function (callback) {
-	// Stub.
+Journeys.prototype.add = function (triggerId, contactId, callback) {
+	var result = request.post(this.options.api.base + '/trigger/' + triggerId + '/contact/' + contactId, {
+		headers: this.options.api.headers
+	});
+
+	return callback ? result.then(callback).catch(callback) : result;
 }
 
 module.exports = Journeys;

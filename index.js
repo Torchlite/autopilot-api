@@ -6,20 +6,16 @@ var Account = require('./resources/account.js');
 function Autopilot(apiKey) {
 	this.options = {
 		api: {
+			base: 'https://api2.autopilothq.com/v1'
 			key: apiKey,
-			base: 'https://api2.autopilothq.com',
-			version: 'v1'
+			headers
 		}
 	};
 
-	this.account = new Account(this);
-	this.contacts = new Contacts(this);
-	this.lists = new Lists(this);
-	this.journeys = new Journeys(this);
-}
-
-Autopilot.prototype.getApiBase = function getApiBase() {
-	return this.options.api.base + '/' + this.options.api.version + '/'
+	this.account = new Account(this.options);
+	this.contacts = new Contacts(this.options);
+	this.lists = new Lists(this.options);
+	this.journeys = new Journeys(this.options);
 }
 
 module.exports = Autopilot;

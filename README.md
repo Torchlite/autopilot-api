@@ -20,7 +20,7 @@ autopilot.contacts.upsert(contact)
 
 ### Quick links:
 * [Installation](#installation)
-* [API Reference](#api-reference)
+* [Usage](#usage)
 	* [Contacts](#contacts)
 		* [Upsert Contact](#upsert-contact)(s)
 		* [Get Contact](#get-contact)
@@ -44,7 +44,7 @@ autopilot.contacts.upsert(contact)
 
 	npm install autopilot-api --save
 
-## API Reference
+## Usage
 
 Begin by initializing with your API key:
 

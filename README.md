@@ -85,7 +85,7 @@ Now you will be able to interact with Autopilot resources as described below.
 
 	autopilot.contacts.upsert(contact, function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -118,7 +118,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.contacts.get('bob@bobbarker.com', function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -151,7 +151,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.contacts.delete('bob@bobbarker.com', function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -184,7 +184,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.contacts.unsubscribe('bob@bobbarker.com', function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -218,7 +218,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.lists.list(function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -251,7 +251,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.lists.insert('Animal Rights Supporters', function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -284,7 +284,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -318,7 +318,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -352,7 +352,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -386,7 +386,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -422,7 +422,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.lists.add('0001', 'bob@bobbarker.com', function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -454,7 +454,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.journeys.list(function (err, response) {
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);
@@ -488,7 +488,7 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	autopilot.account.get(function (err, response))
 		if (err) {
-			return console.error('Error', response);
+			return console.log('Error', response);
 		}
 
 		console.log(response);

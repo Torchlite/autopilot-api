@@ -1,46 +1,49 @@
 var _ = require('lodash');
 var request = require('axios');
 
-function Contacts(options) {
-	this.options = options;
+function Contacts(parent) {
+	this.parent = parent;
+	this.options = parent.options;
 }
 
 Contacts.prototype.upsert = function (data, callback) {
+	var promise;
+
 	if (_.isArray(data)) {
-		var result = request.post(this.options.api.base + '/contacts', {
+		promise = request.post(this.options.api.base + '/contacts', {
 			contacts: data
 		}, { headers: this.options.api.headers });
 	} else {
-		var result = request.post(this.options.api.base + '/contact', {
+		promise = request.post(this.options.api.base + '/contact', {
 			contact: data
 		}, { headers: this.options.api.headers });
 	}
 
-	return callback ? result.then(callback).catch(callback) : result;
+	return this.parent.result(promise, callback);
 }
 
 Contacts.prototype.get = function (id, callback) {
-	var result = request.get(this.options.api.base + '/contact/' + id, {
+	var promise = request.get(this.options.api.base + '/contact/' + id, {
 		headers: this.options.api.headers
 	});
 
-	return callback ? result.then(callback).catch(callback) : result;
+	return this.parent.result(promise, callback);
 }
 
 Contacts.prototype.delete = function (id, callback) {
-	var result = request.delete(this.options.api.base + '/contact/' + id, {
+	var promise = request.delete(this.options.api.base + '/contact/' + id, {
 		headers: this.options.api.headers
 	});
 
-	return callback ? result.then(callback).catch(callback) : result;
+	return this.parent.result(promise, callback);
 }
 
 Contacts.prototype.unsubscribe = function (id, callback) {
-	var result = request.post(this.options.api.base + '/contact/' + id + '/unsubscribe', {
+	var promise = request.post(this.options.api.base + '/contact/' + id + '/unsubscribe', {
 		headers: this.options.api.headers
 	});
 
-	return callback ? result.then(callback).catch(callback) : result;
+	return this.parent.result(promise, callback);
 }
 
 module.exports = Contacts;

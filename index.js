@@ -15,10 +15,24 @@ function Autopilot(apiKey) {
 		}
 	};
 
-	this.account = new Account(this.options);
-	this.contacts = new Contacts(this.options);
-	this.lists = new Lists(this.options);
-	this.journeys = new Journeys(this.options);
+	this.account = new Account(this);
+	this.contacts = new Contacts(this);
+	this.lists = new Lists(this);
+	this.journeys = new Journeys(this);
+}
+
+Autopilot.prototype.result = function (promise, callback) {
+	if (callback) {
+		promise
+			.then(function (res) {
+				callback(null, res);
+			})
+			.catch(function (res) {
+				callback(new Error(), res);
+			});
+	}
+
+	return promise;
 }
 
 module.exports = Autopilot;

@@ -83,8 +83,8 @@ Now you will be able to interact with Autopilot resources as described below.
 	```javascript
 	var contact = { FirstName: 'Slarty', LastName: 'Bartfast', Email: 'mail@me.com' };
 
-	autopilot.contacts.upsert(contact, function (response) {
-		if (response instanceof Error) {
+	autopilot.contacts.upsert(contact, function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -116,8 +116,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.contacts.get('bob@bobbarker.com', function (response) {
-		if (response instanceof Error) {
+	autopilot.contacts.get('bob@bobbarker.com', function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -149,8 +149,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.contacts.delete('bob@bobbarker.com', function (response) {
-		if (response instanceof Error) {
+	autopilot.contacts.delete('bob@bobbarker.com', function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -182,8 +182,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.contacts.unsubscribe('bob@bobbarker.com', function (response) {
-		if (response instanceof Error) {
+	autopilot.contacts.unsubscribe('bob@bobbarker.com', function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -216,8 +216,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.lists.list(function (response) {
-		if (response instanceof Error) {
+	autopilot.lists.list(function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -249,8 +249,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.lists.insert('Animal Rights Supporters', function (response) {
-		if (response instanceof Error) {
+	autopilot.lists.insert('Animal Rights Supporters', function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -282,8 +282,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', function (response) {
-		if (response instanceof Error) {
+	autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -316,8 +316,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (response) {
-		if (response instanceof Error) {
+	autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -350,8 +350,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (response) {
-		if (response instanceof Error) {
+	autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -384,8 +384,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (response) {
-		if (response instanceof Error) {
+	autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -420,8 +420,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.lists.add('0001', 'bob@bobbarker.com', function (response) {
-		if (response instanceof Error) {
+	autopilot.lists.add('0001', 'bob@bobbarker.com', function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -452,8 +452,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.journeys.list(function (response) {
-		if (response instanceof Error) {
+	autopilot.journeys.list(function (err, response) {
+		if (err) {
 			return console.error('Error', response);
 		}
 
@@ -486,8 +486,8 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.account.get(function (response))
-		if (response instanceof Error) {
+	autopilot.account.get(function (err, response))
+		if (err) {
 			return console.error('Error', response);
 		}
 

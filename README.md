@@ -81,7 +81,7 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	var contact = { FirstName: 'Slarty', LastName: 'Bartfast', Email: 'mail@me.com' };
+	var contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
 
 	autopilot.contacts.upsert(contact, function (err, response) {
 		if (err) {

@@ -39,7 +39,7 @@ Contacts.prototype.delete = function (id, callback) {
 }
 
 Contacts.prototype.unsubscribe = function (id, callback) {
-	var promise = request.post(this.options.api.base + '/contact/' + id + '/unsubscribe', {
+	var promise = request.post(this.options.api.base + '/contact/' + id + '/unsubscribe', {}, {
 		headers: this.options.api.headers
 	});
 

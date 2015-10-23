@@ -39,7 +39,7 @@ Lists.prototype.has = function (listId, contactId, callback) {
 }
 
 Lists.prototype.add = function (listId, contactId, callback) {
-	var promise = request.post(this.options.api.base + '/list/' + listId + '/contact/' + contactId, {
+	var promise = request.post(this.options.api.base + '/list/' + listId + '/contact/' + contactId, {}, {
 		headers: this.options.api.headers
 	});
 

@@ -15,7 +15,7 @@ Journeys.prototype.list = function (callback) {
 }
 
 Journeys.prototype.add = function (triggerId, contactId, callback) {
-	var promise = request.post(this.options.api.base + '/trigger/' + triggerId + '/contact/' + contactId, {
+	var promise = request.post(this.options.api.base + '/trigger/' + triggerId + '/contact/' + contactId, {}, {
 		headers: this.options.api.headers
 	});
 

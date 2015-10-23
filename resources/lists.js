@@ -22,8 +22,8 @@ Lists.prototype.insert = function (name, callback) {
 	return this.parent.result(promise, callback);
 }
 
-Lists.prototype.roster = function (id, callback) {
-	var promise = request.get(this.options.api.base + '/list/' + id + '/contacts', {
+Lists.prototype.roster = function (id, bookmark, callback) {
+	var promise = request.get(this.options.api.base + '/list/' + id + '/contacts' + (bookmark ? '/' + bookmark : ''), {
 		headers: this.options.api.headers
 	});
 

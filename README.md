@@ -260,13 +260,14 @@ Now you will be able to interact with Autopilot resources as described below.
 
 #### List Contacts in List
 
-* Method: `autopilot.lists.roster(id[, callback])`
+* Method: `autopilot.lists.roster(id[, bookmark, callback])`
 * Parameters:
 
-	| Name       | Type       | Required | Description                                         |
-	|------------|------------|----------|-----------------------------------------------------|
-	| `id`       | `string`   | Yes      | The `id` of the list to query.   |
-	| `callback` | `function` | No       | A callback function to be executed upon completion. |
+	| Name       | Type       | Required | Description                                                                                                                       |
+	|------------|------------|----------|-----------------------------------------------------------------------------------------------------------------------------------|
+	| `id`       | `string`   | Yes      | The `id` of the list to query.                                                                                                    |
+	| `bookmark` | `string`   | No       | If there are more contacts on the list than have been returned, the bookmark will allow you to access the next group of contacts. |
+	| `callback` | `function` | No       | A callback function to be executed upon completion.                                                                               |
 * Promise example:
 
 	```javascript
@@ -282,7 +283,7 @@ Now you will be able to interact with Autopilot resources as described below.
 * Callback example:
 
 	```javascript
-	autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', function (err, response) {
+	autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', null, function (err, response) {
 		if (err) {
 			return console.log('Error', response);
 		}

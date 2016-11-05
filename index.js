@@ -1,7 +1,5 @@
 let axios = require('axios');
 
-let { Contacts, Journeys, Lists, Account } = require('./resources');
-
 module.exports = class Autopilot {
 	constructor(apiKey) {
 		this.api = axios.create({

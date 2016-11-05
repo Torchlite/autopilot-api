@@ -1,4 +1,4 @@
-let axios = require('axios');
+const axios = require('axios');
 
 module.exports = class Autopilot {
 	constructor(apiKey) {
@@ -11,71 +11,108 @@ module.exports = class Autopilot {
 		});
 	}
 
-	account = {
-		get: (callback) => {
-			return this.api.delete(`account`)
-				.then(callback || res => res);
+	handle(callback, result) {
+		if (callback) {
+			result
+				.then(res => callback(null, res))
+				.catch(err => {
+					const sent = err.hasOwnProperty('response');
+					const reason = sent ? err.response.status : err.message;
+					const response = sent ? error.response : null;
+
+					callback(new Error(reason), response);
+				});
 		}
-	},
+
+		return result;
+	}
 
 	contacts = {
 		upsert: (data, callback) => {
-			let key = Array.isArray(data) ? 'contacts' : 'contact';
+			const key = Array.isArray(data) ? 'contacts' : 'contact';
 
-			return this.api.post(key, { [key]: data })
-				.then(callback || res => res);
+			return this.handle(this.api.post(key, { [key]: data }), callback);
+		},
+		list: (bookmark, callback) => {
+			if (typeof bookmark === 'function') {
+				callback = bookmark;
+				bookmark = undefined;
+			}
+
+			const append = bookmark ? `/${bookmark}` : '';
+
+			return this.handle(this.api.get(`contacts${append}`), callback);
 		},
 		get: (contactId, callback) => {
-			return this.api.get(`contact/${contactId}`)
-				.then(callback || res => res);
+			return this.handle(this.api.get(`contact/${contactId}`), callback);
 		},
 		delete: (contactId, callback) => {
-			return this.api.delete(`contact/${contactId}`)
-				.then(callback || res => res);
+			return this.handle(this.api.delete(`contact/${contactId}`), callback);
 		},
 		unsubscribe: (contactId, callback) => {
-			return this.api.post(`contact/${contactId}/unsubscribe`)
-				.then(callback || res => res);
+			return this.handle(this.api.post(`contact/${contactId}/unsubscribe`), callback);
+		},
+		fields: () => {
+			return this.handle(this.api.get(`contacts/custom_fields`), callback);
 		}
 	};
 
 	journeys = {
 		list: (callback) => {
-			return this.api.get('triggers')
-				.then(callback || res => res);
+			return this.handle(this.api.get('triggers'), callback);
 		},
 		add: (triggerId, contactId, callback) => {
-			return this.api.post(`trigger/${triggerId}/contact/${contactId}`)
-				.then(callback || res => res);
+			return this.handle(this.api.post(`trigger/${triggerId}/contact/${contactId}`), callback);
 		}
 	};
 
 	lists = {
 		list: (callback) => {
-			return this.api.get('lists')
-				.then(callback || res => res);
+			return this.handle(this.api.get('lists'), callback);
 		},
 		insert: (name, callback) => {
-			return this.api.post('list', { name })
-				.then(callback || res => res);
+			return this.handle(this.api.post('list', { name }), callback);
 		},
 		roster: (listId, bookmark, callback) => {
-			bookmark = bookmark ? `/${bookmark}` : '';
+			if (typeof bookmark === 'function') {
+				callback = bookmark;
+				bookmark = undefined;
+			}
 
-			return this.api.get(`list/${listId}/contacts${bookmark}`)
-				.then(callback || res => res);
+			const append = bookmark ? `/${bookmark}` : '';
+
+			return this.handle(this.api.get(`list/${listId}/contacts${append}`), callback);
 		},
 		has: (listId, contactId, callback) => {
-			return this.api.get(`list/${listId}/contact/${contactId}`)
-				.then(callback || res => res);
+			return this.handle(this.api.get(`list/${listId}/contact/${contactId}`), callback);
 		},
 		add: (listId, contactId, callback) => {
-			return this.api.post(`list/${listId}/contact/${contactId}`)
-				.then(callback || res => res);
+			return this.handle(this.api.post(`list/${listId}/contact/${contactId}`), callback);
 		},
 		remove: (listId, contactId, callback) => {
-			return this.api.delete(`list/${listId}/contact/${contactId}`)
-				.then(callback || res => res);
+			return this.handle(this.api.delete(`list/${listId}/contact/${contactId}`), callback);
 		}
 	};
-}
+
+	smartSegments = {
+		list: (callback) => {
+			return this.handle(this.api.get('smart_segments'), callback);
+		},
+		roster: (smartSegmentId, bookmark, callback) => {
+			if (typeof bookmark === 'function') {
+				callback = bookmark;
+				bookmark = undefined;
+			}
+
+			const append = bookmark ? `/${bookmark}` : '';
+
+			return this.handle(this.api.get(`smart_segments/${smartSegmentId}/contacts${append}`), callback);
+		}
+	};
+
+	account = {
+		get: (callback) => {
+			return this.handle(this.api.delete(`account`), callback);
+		}
+	};
+};

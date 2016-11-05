@@ -4,7 +4,7 @@
   "description": "A Node.js wrapper for Autopilot's REST API.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/eslint index.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,12 @@
   "homepage": "https://github.com/Torchlite/autopilot-api#readme",
   "dependencies": {
     "axios": "^0.15.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.9.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.3.1",
+    "eslint-plugin-standard": "^2.0.1"
   }
 }

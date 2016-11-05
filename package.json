@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/Torchlite/autopilot-api#readme",
   "dependencies": {
-    "axios": "^0.7.0",
-    "lodash": "^3.10.1"
+    "axios": "^0.15.2"
   }
 }

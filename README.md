@@ -1,6 +1,6 @@
 # autopilot-api
 
-A Node.js wrapper for [Autopilot](https://autopilothq.com/)'s [REST API](http://docs.autopilot.apiary.io/).
+A third-party Node.js wrapper for [Autopilot](https://autopilothq.com/)'s [REST API](http://docs.autopilot.apiary.io/).
 
 Example:
 

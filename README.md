@@ -21,6 +21,7 @@ Example:
 		* [Get Contact](#get-contact)
 		* [Delete Contact](#delete-contact)
 		* [Unsubscribe Contact](#unsubscribe-contact)
+		* [List Custom Contact Fields](#list-custom-contact-fields)
 	* [Lists](#lists)
 		* [List Lists](#list-lists)
 		* [Insert List](#insert-list)
@@ -28,6 +29,9 @@ Example:
 		* [Check if Contact is in List](#check-if-contact-is-in-list)
 		* [Add Contact to List](#add-contact-to-list)
 		* [Remove Contact from List](#remove-contact-from-list)
+	* [Smart Segments](#smart-segments)
+		* [List Smart Segments](#list-smart-segments)
+		* [List Contacts in Smart Segment](#list-contacts-in-smart-segment)
 	* [Journeys](#journeys) (via triggers)
 		* [Add Contact to Journey](#add-contact-to-journey)
 		* [List Journeys with Triggers](#list-journeys-with-triggers)
@@ -142,6 +146,28 @@ Now you will be able to interact with Autopilot resources as described below.
 
 		try {
 			autopilot.contacts.unsubscribe('bob@bobbarker.com', console.log);
+		} catch (err) {
+			console.error(err);
+		}
+
+#### List Custom Contact Fields
+
+* Method: `autopilot.contacts.fields([callback])`
+* Parameters:
+
+	| Name       | Type       | Required | Description                                                      |
+	|------------|------------|----------|------------------------------------------------------------------|
+	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
+* Promise example:
+
+		autopilot.contacts.fields()
+			.then(console.log)
+			.catch(console.error);
+
+* Callback example:
+
+		try {
+			autopilot.contacts.fields();
 		} catch (err) {
 			console.error(err);
 		}
@@ -285,6 +311,54 @@ Now you will be able to interact with Autopilot resources as described below.
 
 		try {
 			autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', console.log);
+		} catch (err) {
+			console.error(err);
+		}
+
+### Smart Segments
+
+#### List Smart Segments
+
+* Method: `autopilot.smartSegments.list([callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                          |
+	|-------------|------------|----------|----------------------------------------------------------------------|
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
+* Promise example:
+
+		autopilot.smartSegments.list()
+			.then(console.log)
+			.catch(console.error);
+
+* Callback example:
+
+		try {
+			autopilot.smartSegments.list();
+		} catch (err) {
+			console.error(err);
+		}
+
+#### List Contacts in Smart Segment
+
+* Method: `autopilot.smartSegments.roster(id[, bookmark, callback])`
+* Parameters:
+
+	| Name             | Type       | Required | Description                                                          |
+	|------------------|------------|----------|----------------------------------------------------------------------|
+	| `id`             | `string`   | Yes      | The `id` of the smart segment to query.                              |
+	| `bookmark`       | `string`   | No       | If there are more contacts on the smart segment than have been returned, the bookmark will allow you to access the next group of contacts. |
+	| `callback`       | `function` | No       | A callback function to be executed upon completion.                  |
+* Promise example:
+
+		autopilot.smartSegments.roster()
+			.then(console.log)
+			.catch(console.error);
+
+* Callback example:
+
+		try {
+			autopilot.smartSegments.roster();
 		} catch (err) {
 			console.error(err);
 		}

@@ -3,20 +3,15 @@
 A Node.js wrapper for [Autopilot](https://autopilothq.com/)'s [REST API](http://docs.autopilot.apiary.io/).
 
 Example:
-```javascript
-var Autopilot = require('autopilot-api');
-var autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
 
-var contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
+	let Autopilot = require('autopilot-api');
+	let autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
 
-autopilot.contacts.upsert(contact)
-	.then(function (response) {
-		console.log(response);
-	})
-	.catch(function (response) {
-		console.log('Error', response);
-	});
-```
+	let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
+
+	autopilot.contacts.upsert(contact)
+		.then(console.log)
+		.catch(console.error);
 
 ### Quick links:
 * [Installation](#installation)
@@ -48,8 +43,8 @@ autopilot.contacts.upsert(contact)
 
 Begin by initializing with your API key:
 
-	var Autopilot = require('autopilot-api');
-	var autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
+	let Autopilot = require('autopilot-api');
+	let autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
 
 Now you will be able to interact with Autopilot resources as described below.
 
@@ -66,31 +61,21 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback` | `function`          | No       | A callback function to be executed upon completion.                                   |
 * Promise example:
 
-	```javascript
-	var contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
+		let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
 
-	autopilot.contacts.upsert(contact)
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.contacts.upsert(contact)
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	var contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
+		let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
 
-	autopilot.contacts.upsert(contact, function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.contacts.upsert(contact, console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 #### Get Contact
 
@@ -103,27 +88,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
 * Promise example:
 
-	```javascript
-	autopilot.contacts.get('bob@bobbarker.com')
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.contacts.get('bob@bobbarker.com')
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.contacts.get('bob@bobbarker.com', function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.contacts.get('bob@bobbarker.com', console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 #### Delete Contact
 
@@ -136,27 +111,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
 * Promise example:
 
-	```javascript
-	autopilot.contacts.delete('bob@bobbarker.com')
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.contacts.delete('bob@bobbarker.com')
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.contacts.delete('bob@bobbarker.com', function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.contacts.delete('bob@bobbarker.com', console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 #### Unsubscribe Contact
 
@@ -169,27 +134,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
 * Promise example:
 
-	```javascript
-	autopilot.contacts.unsubscribe('bob@bobbarker.com')
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.contacts.unsubscribe('bob@bobbarker.com')
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.contacts.unsubscribe('bob@bobbarker.com', function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.contacts.unsubscribe('bob@bobbarker.com', console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 ### Lists
 
@@ -203,27 +158,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
 * Promise example:
 
-	```javascript
-	autopilot.lists.list()
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.lists.list()
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.lists.list(function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.lists.list(console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 #### Insert List
 
@@ -236,27 +181,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
 * Promise example:
 
-	```javascript
-	autopilot.lists.insert('Animal Rights Supporters')
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.lists.insert('Animal Rights Supporters')
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.lists.insert('Animal Rights Supporters', function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.lists.insert('Animal Rights Supporters', console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 #### List Contacts in List
 
@@ -270,27 +205,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback` | `function` | No       | A callback function to be executed upon completion.                                                                               |
 * Promise example:
 
-	```javascript
-	autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8')
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8')
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', null, function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', null, console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 #### Check if Contact is in List
 
@@ -304,27 +229,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.               |
 * Promise example:
 
-	```javascript
-	autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 #### Add Contact to List
 
@@ -338,27 +253,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.               |
 * Promise example:
 
-	```javascript
-	autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 #### Remove Contact from List
 
@@ -372,27 +277,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.               |
 * Promise example:
 
-	```javascript
-	autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 ### Journeys (via triggers)
 
@@ -408,27 +303,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
 * Promise example:
 
-	```javascript
-	autopilot.lists.add('0001', 'bob@bobbarker.com')
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.lists.add('0001', 'bob@bobbarker.com')
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.lists.add('0001', 'bob@bobbarker.com', function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.lists.add('0001', 'bob@bobbarker.com', console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 #### List Journeys with Triggers
 
@@ -440,27 +325,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
 * Promise example:
 
-	```javascript
-	autopilot.journeys.list()
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.journeys.list()
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.journeys.list(function (err, response) {
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.journeys.list(console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 ### Account
 
@@ -474,27 +349,17 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
 * Promise example:
 
-	```javascript
-	autopilot.account.get()
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (response) {
-			console.log('Error', response);
-		});
-	```
+		autopilot.account.get()
+			.then(console.log)
+			.catch(console.error);
 
 * Callback example:
 
-	```javascript
-	autopilot.account.get(function (err, response))
-		if (err) {
-			return console.log('Error', response);
+		try {
+			autopilot.account.get(console.log);
+		} catch (err) {
+			console.error(err);
 		}
-
-		console.log(response);
-	});
-	```
 
 ## License
 

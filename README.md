@@ -75,11 +75,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 		let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
 
-		try {
-			autopilot.contacts.upsert(contact, console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.contacts.upsert(contact, (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### Get Contact
 
@@ -98,11 +100,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.contacts.get('bob@bobbarker.com', console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.contacts.get('bob@bobbarker.com', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### Delete Contact
 
@@ -121,11 +125,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.contacts.delete('bob@bobbarker.com', console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.contacts.delete('bob@bobbarker.com', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### Unsubscribe Contact
 
@@ -144,11 +150,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.contacts.unsubscribe('bob@bobbarker.com', console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.contacts.unsubscribe('bob@bobbarker.com', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### List Custom Contact Fields
 
@@ -166,11 +174,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.contacts.fields();
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.contacts.fields((err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 ### Lists
 
@@ -190,11 +200,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.lists.list(console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.lists.list((err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### Insert List
 
@@ -213,11 +225,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.lists.insert('Animal Rights Supporters', console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.lists.insert('Animal Rights Supporters', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### List Contacts in List
 
@@ -237,11 +251,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', null, console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', null, () => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### Check if Contact is in List
 
@@ -261,11 +277,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### Add Contact to List
 
@@ -285,11 +303,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### Remove Contact from List
 
@@ -309,11 +329,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 ### Smart Segments
 
@@ -333,11 +355,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.smartSegments.list();
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.smartSegments.list((err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### List Contacts in Smart Segment
 
@@ -357,11 +381,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.smartSegments.roster();
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.smartSegments.roster((err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 ### Journeys (via triggers)
 
@@ -383,11 +409,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.lists.add('0001', 'bob@bobbarker.com', console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.lists.add('0001', 'bob@bobbarker.com', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 #### List Journeys with Triggers
 
@@ -405,11 +433,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.journeys.list(console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.journeys.list((err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 ### Account
 
@@ -429,11 +459,13 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		try {
-			autopilot.account.get(console.log);
-		} catch (err) {
-			console.error(err);
-		}
+		autopilot.account.get((err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
 
 ## License
 

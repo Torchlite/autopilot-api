@@ -251,7 +251,7 @@ Now you will be able to interact with Autopilot resources as described below.
 
 * Callback example:
 
-		autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', null, () => {
+		autopilot.lists.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', () => {
 			if (err) {
 				return console.error(err, response);
 			}
@@ -375,13 +375,13 @@ Now you will be able to interact with Autopilot resources as described below.
 	| `callback`       | `function` | No       | A callback function to be executed upon completion.                  |
 * Promise example:
 
-		autopilot.smartSegments.roster()
+		autopilot.smartSegments.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8')
 			.then(console.log)
 			.catch(console.error);
 
 * Callback example:
 
-		autopilot.smartSegments.roster((err, response) => {
+		autopilot.smartSegments.roster('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', (err, response) => {
 			if (err) {
 				return console.error(err, response);
 			}

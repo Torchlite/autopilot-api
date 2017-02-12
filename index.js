@@ -1,6 +1,8 @@
+'use strict';
+
 const axios = require('axios');
 
-module.exports = class Autopilot {
+class Autopilot {
 	constructor(apiKey) {
 		const api = axios.create({
 			baseURL: 'https://api2.autopilothq.com/v1/',
@@ -35,7 +37,7 @@ module.exports = class Autopilot {
 			unsubscribe: (contactId, callback) => {
 				return this.handle(api.post(`contact/${contactId}/unsubscribe`), callback);
 			},
-			fields: () => {
+			fields: (callback) => {
 				return this.handle(api.get(`contacts/custom_fields`), callback);
 			}
 		};
@@ -107,7 +109,7 @@ module.exports = class Autopilot {
 				.catch(err => {
 					const sent = err.hasOwnProperty('response');
 					const reason = sent ? err.response.status : err.message;
-					const response = sent ? error.response : null;
+					const response = sent ? err.response : null;
 
 					callback(new Error(reason), response);
 				});
@@ -115,4 +117,6 @@ module.exports = class Autopilot {
 
 		return result;
 	}
-};
+}
+
+module.exports = Autopilot

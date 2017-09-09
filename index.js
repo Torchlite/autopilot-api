@@ -97,7 +97,7 @@ class Autopilot {
 
 		this.account = {
 			get: (callback) => {
-				return this.handle(api.delete(`account`), callback);
+				return this.handle(api.get(`account`), callback);
 			}
 		};
 	}

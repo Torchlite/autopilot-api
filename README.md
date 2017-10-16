@@ -52,6 +52,11 @@ Begin by initializing with your API key:
 
 Now you will be able to interact with Autopilot resources as described below.
 
+Optionally you can pass an endpoint to use. This can be useful in testing if you want to call the sandbox api.
+
+	let Autopilot = require('autopilot-api');
+	let autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e', 'https://private-anon-5efcbf2622-autopilot.apiary-mock.com/v1');
+
 ### Contacts
 
 #### Upsert Contact

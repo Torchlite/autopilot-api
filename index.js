@@ -3,9 +3,9 @@
 const axios = require('axios');
 
 class Autopilot {
-	constructor(apiKey) {
+	constructor(apiKey, endpoint) {
 		const api = axios.create({
-			baseURL: 'https://api2.autopilothq.com/v1/',
+			baseURL: endpoint || 'https://api2.autopilothq.com/v1/',
 			headers: {
 				autopilotapikey: apiKey,
 				Accept: 'application/json'

@@ -100,6 +100,21 @@ class Autopilot {
 				return this.handle(api.get(`account`), callback);
 			}
 		};
+
+		this.resthooks = {
+			list: (callback) => {
+				return this.handle(api.get('hooks'), callback);
+			},
+			delete: (callback) => {
+				return this.handle(api.delete('hooks'), callback);
+			},
+			register: (event, target_url, callback) => {
+				return this.handle(api.post('hook', { event, target_url }), callback);
+			},
+			unregister: (hook_id, callback) => {
+				return this.handle(api.delete(`hook/${hook_id}`), callback);
+			},
+		};
 	}
 
 	handle(result, callback) {

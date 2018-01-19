@@ -7,7 +7,7 @@ Example:
 	let Autopilot = require('autopilot-api');
 	let autopilot = new Autopilot('c5359558cf764d17bc49f13a87e8a56e');
 
-	let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
+	let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@priceisright.com' };
 
 	autopilot.contacts.upsert(contact)
 		.then(console.log)
@@ -37,6 +37,11 @@ Example:
 		* [List Journeys with Triggers](#list-journeys-with-triggers)
 	* [Account](#account)
 		* [Get Account](#get-account)
+	* [REST Hooks](#rest-hooks)
+		* [List REST Hooks](#list-rest-hooks)
+		* [Register REST Hook](#register-rest-hook)
+		* [Unregister REST Hook](#unregister-rest-hook)
+		* [Delete All REST Hooks](#delete-all-rest-hooks)
 * [License](#license)
 
 ## Installation
@@ -70,7 +75,7 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 	| `callback` | `function`          | No       | A callback function to be executed upon completion.                                   |
 * Promise example:
 
-		let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
+		let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@priceisright.com' };
 
 		autopilot.contacts.upsert(contact)
 			.then(console.log)
@@ -78,7 +83,7 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 
 * Callback example:
 
-		let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@bobbarker.com' };
+		let contact = { FirstName: 'Bob', LastName: 'Barker', Email: 'bob@priceisright.com' };
 
 		autopilot.contacts.upsert(contact, (err, response) => {
 			if (err) {
@@ -99,13 +104,13 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
 * Promise example:
 
-		autopilot.contacts.get('bob@bobbarker.com')
+		autopilot.contacts.get('bob@priceisright.com')
 			.then(console.log)
 			.catch(console.error);
 
 * Callback example:
 
-		autopilot.contacts.get('bob@bobbarker.com', (err, response) => {
+		autopilot.contacts.get('bob@priceisright.com', (err, response) => {
 			if (err) {
 				return console.error(err, response);
 			}
@@ -124,13 +129,13 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
 * Promise example:
 
-		autopilot.contacts.delete('bob@bobbarker.com')
+		autopilot.contacts.delete('bob@priceisright.com')
 			.then(console.log)
 			.catch(console.error);
 
 * Callback example:
 
-		autopilot.contacts.delete('bob@bobbarker.com', (err, response) => {
+		autopilot.contacts.delete('bob@priceisright.com', (err, response) => {
 			if (err) {
 				return console.error(err, response);
 			}
@@ -149,13 +154,13 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 	| `callback` | `function` | No       | A callback function to be executed upon completion.              |
 * Promise example:
 
-		autopilot.contacts.unsubscribe('bob@bobbarker.com')
+		autopilot.contacts.unsubscribe('bob@priceisright.com')
 			.then(console.log)
 			.catch(console.error);
 
 * Callback example:
 
-		autopilot.contacts.unsubscribe('bob@bobbarker.com', (err, response) => {
+		autopilot.contacts.unsubscribe('bob@priceisright.com', (err, response) => {
 			if (err) {
 				return console.error(err, response);
 			}
@@ -276,13 +281,13 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.               |
 * Promise example:
 
-		autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
+		autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@priceisright.com')
 			.then(console.log)
 			.catch(console.error);
 
 * Callback example:
 
-		autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', (err, response) => {
+		autopilot.lists.has('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@priceisright.com', (err, response) => {
 			if (err) {
 				return console.error(err, response);
 			}
@@ -302,13 +307,13 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.               |
 * Promise example:
 
-		autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
+		autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@priceisright.com')
 			.then(console.log)
 			.catch(console.error);
 
 * Callback example:
 
-		autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', (err, response) => {
+		autopilot.lists.add('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@priceisright.com', (err, response) => {
 			if (err) {
 				return console.error(err, response);
 			}
@@ -328,13 +333,13 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.               |
 * Promise example:
 
-		autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com')
+		autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@priceisright.com')
 			.then(console.log)
 			.catch(console.error);
 
 * Callback example:
 
-		autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@bobbarker.com', (err, response) => {
+		autopilot.lists.remove('contactlist_06444749-9C0F-4894-9A23-D6872F9B6EF8', 'bob@priceisright.com', (err, response) => {
 			if (err) {
 				return console.error(err, response);
 			}
@@ -408,13 +413,13 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
 * Promise example:
 
-		autopilot.lists.add('0001', 'bob@bobbarker.com')
+		autopilot.lists.add('0001', 'bob@priceisright.com')
 			.then(console.log)
 			.catch(console.error);
 
 * Callback example:
 
-		autopilot.lists.add('0001', 'bob@bobbarker.com', (err, response) => {
+		autopilot.lists.add('0001', 'bob@priceisright.com', (err, response) => {
 			if (err) {
 				return console.error(err, response);
 			}
@@ -465,6 +470,107 @@ Optionally you can pass an endpoint to use. This can be useful in testing if you
 * Callback example:
 
 		autopilot.account.get((err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
+
+### REST Hooks
+
+#### List REST Hooks
+
+* Method: `autopilot.restHooks.list([callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                          |
+	|-------------|------------|----------|----------------------------------------------------------------------|
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
+* Promise example:
+
+		autopilot.restHooks.list()
+			.then(console.log)
+			.catch(console.error);
+
+* Callback example:
+
+		autopilot.restHooks.list((err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
+
+#### Register REST Hook
+
+* Method: `autopilot.restHooks.register(event, targetUrl, [callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                                    |
+	|-------------|------------|----------|--------------------------------------------------------------------------------|
+	| `event`     | `string`   | Yes      | The event name that you wish to be told about.                                 |
+	| `targetUrl` | `string`   | Yes      | The URL in your API which you want Autopilot to POST to when the event occurs. |
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.                            |
+* Promise example:
+
+		autopilot.restHooks.register('contact_added', 'http://www.priceisright.com/tracking')
+			.then(console.log)
+			.catch(console.error);
+
+* Callback example:
+
+		autopilot.restHooks.register('contact_added', 'http://www.priceisright.com/tracking', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		})
+
+#### Unregister REST Hook
+
+* Method: `autopilot.restHooks.unregister(hookId, [callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                          |
+	|-------------|------------|----------|----------------------------------------------------------------------|
+	| `hookId`    | `string`   | Yes      | The `id` of the hook to unregister.                                    |
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
+* Promise example:
+
+		autopilot.restHooks.unregister('hook_ED75BA78-2405-4564-B24C-F2B8F936C7C6')
+			.then(console.log)
+			.catch(console.error);
+
+* Callback example:
+
+		autopilot.restHooks.unregister('hook_ED75BA78-2405-4564-B24C-F2B8F936C7C6', (err, response) => {
+			if (err) {
+				return console.error(err, response);
+			}
+
+			console.log(response);
+		});
+
+#### Delete All REST Hooks
+
+* Method: `autopilot.restHooks.deleteAll([callback])`
+* Parameters:
+
+	| Name        | Type       | Required | Description                                                          |
+	|-------------|------------|----------|----------------------------------------------------------------------|
+	| `callback`  | `function` | No       | A callback function to be executed upon completion.                  |
+* Promise example:
+
+		autopilot.restHooks.deleteAll()
+			.then(console.log)
+			.catch(console.error);
+
+* Callback example:
+
+		autopilot.restHooks.deleteAll((err, response) => {
 			if (err) {
 				return console.error(err, response);
 			}
